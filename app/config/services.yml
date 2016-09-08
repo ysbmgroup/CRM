@@ -1,0 +1,27 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Product }
+
+    admin.provider:
+        class: AppBundle\Admin\ProviderAdmin
+        arguments: [~, AppBundle\Entity\Provider, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Provider }
+
+    admin.channel:
+        class: AppBundle\Admin\ChannelAdmin
+        arguments: [~, AppBundle\Entity\Channel, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Channel }
