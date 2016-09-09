@@ -1,0 +1,24 @@
+AppBundle\Entity\Provider:
+    type: entity
+    table: providers
+    repositoryClass: AppBundle\Repository\ProviderRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+        status:
+            type: boolean
+            length: 127
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    lifecycleCallbacks:
+        prePersist: [ updatedTimestamps ]
+        preUpdate: [ updatedTimestamps ]
